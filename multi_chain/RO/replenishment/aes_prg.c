@@ -194,6 +194,52 @@ int prg_gen_aes (aes * aes_instance, char* ctr, char* random_numbers, int random
 	return SUCCESS;
 }
 
+int ctr_increment (char * ctr, int random_length)
+{
+	int loop;
+	if (random_length % 16 == 0)
+	{
+		loop = random_length / 16;
+	}
+	else
+	{
+		loop = (random_length / 16) + 1; 
+	}
+
+	int carry = 0;
+	for (int i = 0; i < loop; i++)
+	{
+		if ((ctr[0] & 0xff) == 0xff)
+		{
+			ctr[0] = 0x00;
+			carry = 1;
+		}
+		else
+		{
+			ctr[0] = ctr[0] + 1;
+			carry = 0;
+		}
+		for (i = 1; i < 16; i++)
+		{
+			if (carry == 0)
+			{
+				break;
+			}
+			else if ((ctr[i] & 0xff) == 0xff)
+			{
+				ctr[i] = 0x00;
+				carry = 1;
+			}
+			else
+			{
+				ctr[i] = ctr[i] + 1;
+				carry = 0;
+			}
+		}
+	}
+	return SUCCESS;
+}
+
 /*int main()
 {
 	aes aes_instance;
