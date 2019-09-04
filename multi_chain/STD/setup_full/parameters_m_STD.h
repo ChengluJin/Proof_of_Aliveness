@@ -1,5 +1,4 @@
 #define N_SUB_CHAIN 512
-//#define N_NODE_PER_CHAIN 64 // 2^15 / 512 = 64
 #define N_NODE_PER_CHAIN 8192 // 2^22 / 512 = 8192
 
 #define PRG_OWF_N_ELEMENT 2200

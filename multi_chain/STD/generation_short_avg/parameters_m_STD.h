@@ -1,4 +1,4 @@
-#define N_SUB_CHAIN 10 //arbitrary positive integer
+#define N_SUB_CHAIN 1000 //arbitrary positive integer
 #define N_NODE_PER_CHAIN 64 // 2^15 / 512 = 64
 //#define N_NODE_PER_CHAIN 8192 // 2^22 / 512 = 8192
 
